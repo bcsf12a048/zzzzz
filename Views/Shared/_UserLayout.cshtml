@@ -1,0 +1,493 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+
+}
+@using radio24by7.Models
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/marquee.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+ 
+    <script src="~/Scripts/marquee.js"></script>
+   
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <div class="content">
+        <div class="container">
+            <div class="marquee-sibling">
+                News Alerts
+            </div>
+            <div class="marquee" >
+
+                <ul class="marquee-content-items">
+                   
+                    @* cast karna ga  viewbag.model to List*@    
+                     
+                    @{
+                        var Users1 = (List<NewsAlert>)ViewBag.newsalert;
+                    }
+                    @foreach(var xx in Users1)
+                    { 
+                    <li>
+                        <a style="color:white;text-decoration:none">@xx.News </a>
+                        <a href="@xx.Link">.READ MORE</a>
+                    </li>
+                    }
+                </ul>
+
+
+
+            </div>
+
+
+
+        </div>
+        <footer>
+
+            <script>
+                $(function () {
+
+                    createMarquee({
+                    });
+                });
+
+            </script>
+        </footer>
+    </div>
+
+    <div>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("index")" style="font-size:xx-large;">Pucit Radio</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/User/Index" id="b0"><span class="glyphicon glyphicon-music"></span> Home</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="#" id="b22" data-toggle="modal" data-target="#signupModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#" id="b3"><span class="glyphicon glyphicon-calendar"></span> Show Timing</a></li>
+
+                    <li><a href="#" id="b5">Complain</a></li>
+                    <li><a href="#" id="b6">Mobile App</a></li>
+                   
+                    <li><a href="#" id="b7"> About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 img">
+
+        <img class="img1" src="~/images/background.jpg" />        
+        <div id="div1">
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <!--Login Form-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:rgba(95, 6, 143, 0.62);color:white ">
+                <button id="close" type="button" class="close" style="margin-right:-100px;color:white" data-dissmiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-size:xx-large;margin-left:25px">Login</h4>
+                <div class="modal-body">
+
+                    <form action="/User/CLogin" method="post">
+                        <div class="form-group " style="padding-left:125px">
+
+
+                            <label for="UserName">UserName</label>
+                            <input id="UserName" name="UserName" value="" type="text" style="color:black">
+                            <br />
+                            <br />
+                            <label for="Pin">Pin</label>
+                            <input id="Pin" name="Pin" value="" type="password" style="color:black">
+
+                           <!-- <a href="#" title="Forgot password?" data-toggle="modal" data-target="#forgotModal" style="margin-left:5px;color:white ">Forgot password?</a>
+                            --><br />
+                            <br />
+                            <input value="Login" class="btn btn-default " type="submit">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Login Form End-->
+
+    <!--forgot-->
+
+    <div id="forgotModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:rgba(95, 6, 143, 0.62);color:white ">
+                <button id="close1" type="button" class="close" style="margin-right:-100px;color:white" data-dissmiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-size:xx-large;margin-left:25px">Login</h4>
+                <div class="modal-body">
+
+                    <form action="/User/Forgot" method="post">
+                        <div class="form-group " style="padding-left:125px">
+
+
+                            <label for="email">Email</label>
+                            <input id="Email" name="Email" value="" type="text" style="color:black">
+                            <br />
+                            <br />
+                            
+                            <input value="Next" class="btn btn-default " type="submit">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end-->
+    <!--forgot-->
+
+    <div id="forgotModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:rgba(95, 6, 143, 0.62);color:white ">
+                <button id="close1" type="button" class="close" style="margin-right:-100px;color:white" data-dissmiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-size:xx-large;margin-left:25px">Login</h4>
+                <div class="modal-body">
+
+                    <form action="/User/Forgot" method="post">
+                        <div class="form-group " style="padding-left:125px">
+
+
+                            <label for="email">Email</label>
+                            <input id="Email" name="Email" value="" type="text" style="color:black">
+                            <br />
+                            <br />
+
+                            <input value="Next" class="btn btn-default " type="submit">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end-->
+
+
+    <div id="signupModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color:rgba(95, 6, 143, 0.62);color:white ">
+                <button id="closeSignup" type="button" class="close" style="margin-right:-100px;color:white" data-dissmiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-size:xx-large;margin-left:2px">Signup Form</h4>
+                <div class="modal-body">
+                    <!--SignUp Form-->
+                    <p style="text-align:left; margin-left:10px">It's free and SignUp will be.</p>
+
+                    <form action="/User/SSignUp" method="post">
+                        <div class="form-group" style="padding-left:125px ">
+
+                            <label for="UserName">UserName</label>
+                            <input type="text" name="UserName" id="usernam" value="" style="color:black " />
+                            <input type="button" id="chek" value="Check" style="color:black;width:60px" />
+
+                            <br />
+                            <div id="result" style="width:350px ;color:white"></div>
+                            <br /> 
+
+
+                            <label for="Name">Name</label>
+                            <input id="Name" name="Name" value="" type="text" style="color:black">
+                            <br />
+ 
+                            <br /> 
+                            <label for="Pin">Pin</label>
+                            <input id="Pin" name="Pin" value="" type="password" style="color:black">
+                            <br />
+                            <label for="Role">Account type</label>
+                            <input type="radio" name="role" style="width:25px" value="Listener" checked>Listener<br>
+                            <input type="radio" style="width:25px" name="role" value="Admin" disabled>Admin<br>
+                            <br />
+                            <label for="Email">Email</label>
+                            <input id="Email" name="Email" value="" type="email" style="color:black">
+                            <br />
+                            <label for="Phone">Mobile #</label>
+                            <input id="Phone" name="Phone" value="" type="number" style="color:black">
+                            <br />
+                            <label for="Address">Address</label>
+                            <input id="Address" name="Address" value="" type="text" style="color:black">
+                            <br />
+                            <label for="Gender">Gender</label>
+                            <input type="radio" name="gender" style="width:25px" value="male" checked> Male<br>
+                            <input type="radio" style="width:25px" name="gender" value="female"> Female<br>
+                            <br />
+                            <input type="hidden" style="width:25px" name="Status" value="Disable"><br>
+                            <input value="Sign Up" id="signup" class="btn btn-default " type="submit">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container1">
+        <br>
+              <div class="row">
+
+                  <div id="facebok" class="fb col-md-2">
+                      <div class="fb-page" data-href="https://www.facebook.com/PuOLdCampusMusicClub/" data-tabs="timeline" data-width="250" data-height="200" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/PuOLdCampusMusicClub/"><a href="https://www.facebook.com/PuOLdCampusMusicClub/">PU - OLd Campus Music Club</a></blockquote></div></div>
+                  </div>
+
+               <div id="myCarousel" class="carousel slide col-md-8" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/images/10446520_1112795795448537_1590009745157046534_n.jpg" alt="Chania" width="460" height="345">
+                </div>
+
+
+                @{
+                    var Users12 = (List<Image>)ViewBag.imgalert;
+                }
+                @foreach (var xxx in Users12)
+                {
+                    <div class="item ">
+                        <img src="data:image/png;base64,@Convert.ToBase64String(xxx.Data)" width="460" height="345" />
+                    </div>
+                }
+
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+   
+        
+                  </div>
+    </div>
+
+
+
+
+    <!-- modal end-->
+    <div>
+
+        <img src="~/images/animated-telephone-image-0008.gif" style="width:60px;right:60px;bottom:80px;position:fixed" />
+
+        <div id="SkypeButton_Call_qarab_ali_1" class="skype">
+            Call Us on Pucit_radio
+         
+            <div id="SkypeButton_Call_Kamalhasan93_1">
+                <script type="text/javascript">
+                    Skype.ui({
+                        "name": "call",
+                        "element": "SkypeButton_Call_Kamalhasan93_1",
+                        "participants": ["Kamalhasan93"],
+                        "imageSize": 24
+                    });
+                </script>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div id="footerOuterWrapper">
+        <div id="footerWrapper">
+
+            <div class="footer">
+
+
+                <p>&nbsp;</p>
+
+
+                <div class="row other-links center-block">
+                    <div class="col-sm-3 col-xs-6">
+                        <b><span class="glyphicon glyphicon-phone grey-circle" aria-hidden="true"></span>Contact us</b><br>
+                        <p>
+                            T: 000 000 0000<br>
+                            E:<small> <a href="#">pucitradio@pucit.edu.pk</a></small><br>
+                        </p>
+
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <b><span class="glyphicon glyphicon-map-marker grey-circle" aria-hidden="true"></span>Find us</b><br>
+                        <p>
+                            PUCIT RADIO<br>
+                            Punjab University<br>
+                            Old Campus <br>
+                            Mall-Road Lahore<br>
+                        </p>
+
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <b><span class="glyphicon glyphicon-info-sign grey-circle" aria-hidden="true"></span>Learn more</b><br>
+                        <p>
+                            <a href="#">Terms of Use</a><br>
+                            <a href="#">Privacy Policy</a><br>
+                            <a href="#">Blog</a><br>
+                            <a href="#">FAQ</a>
+                        </p>
+
+                    </div>
+
+                    
+                </div>
+                    <div id="copyright">
+                        Copyright (c) ZK, 2016. All rights reserved. Reproduction in whole or in part without permission is prohibited.<br>
+                        Pucit Radio- pu old campus mall road lahore - Company Number: 00000000 - Mob: 00000000<br>
+                       
+                    </div>
+
+                    <div class="row social-links center-block" style="max-width:230px;">
+
+                        <div id="social12" class="col-xs-4 img-circle"><a href="https://www.facebook.com/" target="_blank"><img src="~/images/footer-fb.png" /></a></div>
+                        <div id="social13" class="col-xs-4 img-circle"><a href="https://twitter.com/" target="_blank"><img src="~/images/footer-twitter.png" /></a></div>
+
+                        <div id="social14" class="col-xs-4 img-circle"><a href="https://plus.google.com/" target="_blank"><img src="~/images/gmail-footer.png" /></a></div>
+                    </div>
+
+                
+            </div>
+        </div>
+        </div>
+</body>
+</html>
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#b5').click(function () {
+
+            $('#div1').load('@Url.Action("Complains", "User")');
+
+        });
+    });
+
+
+
+
+
+    $(document).ready(function () {
+        $('#b3').click(function () {
+
+            $('#div1').load('@Url.Action("ShowTiming", "User")');
+
+        });
+    });
+    
+    $(document).ready(function () {
+        $('#close').click(function () {
+
+            $('#myModal').modal('hide');
+           
+        });
+
+       
+            $('#close1').click(function () {
+
+                $('#forgotModal').modal('hide');
+           
+            });
+        $('#closeSignup').click(function () {
+
+            $('#signupModal').modal('hide');
+
+
+
+        });
+
+    });
+
+    $(document).ready(function () {
+        $('#b7').click(function () {
+
+            $('#div1').load('@Url.Action("AboutUs", "User")');
+
+        });
+    });
+
+   
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        // alert('ok');
+        
+        $('#chek').click(function () {
+           
+            var userName = $('#usernam').val();
+
+            //  alert('User Name ='+ userName);
+            $.getJSON("/User/CCheck?UserName=" + userName, function (data) {
+
+              //  $('#checking').show();
+                if (data) {
+                    //  alert("useralreadyExist");
+                    $('#result').text("User already exists in database");
+
+                }
+                else {
+                    //  alert("userAvailable");
+                    $('#result').text("User Name is available");
+                }
+            });
+
+        });
+
+    });
+
+
+   
+
+</script>
+

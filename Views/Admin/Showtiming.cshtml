@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Showtiming";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="showtime1" style="overflow-y:auto">
+
+
+    <table style=" width:90% ">
+        <caption>Show Timings</caption>
+        <tr style="font-size:16px;border: 2px solid black;">
+            
+            <th> Rj Name  </th>
+            <th> Show Name  </th>
+            <th>Days</th>
+            <th>Timing</th>
+            <th style="width:3%">Update</th>
+            <th style="width:3%">Delete</th>
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                
+                <td> @x.Rjname  </td>
+                <td> @x.Showname  </td>
+                <td> @x.Day  </td>
+                <td> @x.Time  </td>
+                <td> <a href="/Admin/RjUpdate/@x.Id" class="btn btn-default ">Update</a></td>
+                <td> <a href="/Admin/RjDelete/@x.Id" class="btn btn-default ">Delete</a></td>
+
+            </tr>
+
+        }
+    </table>
+
+
+<ul>
+    <li><a href="#" class="btn btn-default " data-toggle="modal" data-target="#myModal"> Add</a></li>
+</ul>
+
+</div>
+<!--Add-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color:rgba(95, 6, 143, 0.62);color:white ">
+            <button id="close" type="button" class="close" style="margin-right:-100px;color:white" data-dissmiss="modal">&times;</button>
+            <h4 class="modal-title" style="font-size:xx-large;margin-left:25px">Add New</h4>
+            <div class="modal-body">
+
+                <form action="/Admin/RjAdd" method="post">
+                    <div class="form-group " style="padding-left:125px">
+
+
+                        <label for="RjName">Rj Name</label>
+                        <input name="t1" value="" type="text" style="color:black">
+                        <br />
+                        <label for="Showname">Show Name</label>
+                        <input name="t2" value="" type="text" style="color:black">
+                        <br />
+                        <label for="Time">Time</label>
+                        <input name="t3" value="" type="time" style="color:black">
+                        <br />
+
+                        <label for="day">Day</label>
+                        <input name="t4" value="" type="text" style="color:black">
+                        <br />
+                        <br />
+                        <input value="Add" class="btn btn-default " type="submit">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿<div class="showtime1" style="overflow-y:auto">
+
+
+    <table style=" width:90% ">
+        <caption>Show Timings</caption>
+        <tr style="font-size:16px;border: 2px solid black;">
+           
+            <th>Instructor Name  </th>
+            <th> Show Name  </th>
+            <th>Days</th>
+            <th>Timing</th>
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+               
+                <td> @x.InstructorName  </td>
+                <td> @x.Showname  </td>
+                <td> @x.day  </td>
+                <td> @x.Time  </td>
+
+            </tr>
+
+        }
+    </table>
+
+</div>

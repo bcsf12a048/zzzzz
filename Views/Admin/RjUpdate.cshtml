@@ -1,0 +1,39 @@
+﻿@model radio24by7.Models.Showtime
+@{
+    ViewBag.Title = "RjUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="Strm" style="top:auto; bottom:0px ;height:100%;">
+    <h2>Rj Update</h2>
+    <p style="text-align:left; margin-left:10px">Details</p>
+    <form action="/Admin/RjjUpdate/@Model.Id" method="post">
+        <div class="form-group " style="padding-left:4px">
+
+
+            <label for="Rj name ">Instructor Name</label>
+            <input name="Rjname" value="@Model.Rjname" type="text" style="color:black">
+            <br />
+
+            <label for="Showname">Show Name</label>
+            <input name="Showname" value="@Model.Showname" type="text" style="color:black">
+            <br />
+
+            <label for="Time">Time</label>
+            <input name="Time" value="@Model.Time" type="text" style="color:black">
+            <br />
+            <label for="day">Day</label>
+            <input name="Day" value="@Model.Day" type="text" style="color:black">
+            <br />
+
+        </div>
+
+
+        <button type="submit" class="btn btn-default ">Update</button>
+        <br />
+
+    </form>
+
+</div>

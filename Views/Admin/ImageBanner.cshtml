@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "ImageBanner";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div  id="addim" class="showtime1" style="overflow-y:auto">
+
+   
+    <table style="width:90% ">
+        <caption>Show Timings</caption>
+        <tr style="font-size:16px;border: 2px solid black;">
+
+            <th> SIZE  </th>
+            <th> NAME  </th>
+            <th> Data </th>
+            
+            <th style="width:3%">Delete</th>
+           
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+
+                <td> @x.Siez  </td>
+                <td> @x.Name  </td>
+                <td> @x.Data  </td>
+                
+                
+                <td> <a href="/Admin/ImgDelete/@x.Id" class="btn btn-default ">Delete</a></td>
+
+            </tr>
+
+        }
+    </table>
+
+
+    <ul>
+        <li><a href="/Admin/Uploading" id="" class="btn btn-default "> Add</a></li>
+    </ul>
+
+</div>
+<!--Add-->
+

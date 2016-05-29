@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Complain";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="showtime1" style="overflow-y:auto ;overflow-x:auto">
+
+
+    <table style=" width:90% ">
+        <caption>Complain</caption>
+        <tr style="font-size:16px;border: 2px solid black;">
+            <th>Id</th>
+            <th> Name  </th>
+            <th> Email  </th>
+            <th> Moblie # </th>
+            <th>Complain</th>
+            <th>Remove</th>
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td> @x.Name </td>
+                <td> @x.Email  </td>
+                <td> @x.Mobile  </td>
+                <td> @x.Complain1 </td>
+                <td> <a href="/Admin/ComplainDelete/@x.Id">Delete</a></td>
+
+            </tr>
+
+        }
+    </table>
+
+</div>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Showuser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="showtime1" style="overflow-y:auto ;overflow-x:auto">
+
+
+    <table style=" width:90% ">
+        <caption>Users</caption>
+        <tr style="font-size:16px;border: 2px solid black;">
+            <th>Id</th>
+            <th> Name  </th>
+            <th>User Neme</th>
+            <th>Pin</th>
+            <th> Email  </th>
+            <th> Moblie # </th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Status</th>
+            <th>Role</th>
+            <th>Remove</th>
+            <th>Update</th>
+
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td> @x.Name </td>
+                <td> @x.UserName </td>
+                <td> @x.Pin </td>
+                <td> @x.Email  </td>
+                <td> @x.Phone  </td>
+                <td> @x.Address </td>
+                <td> @x.gender </td>
+                <td> @x.Status </td>
+                <td> @x.Role </td>
+
+                <td> <a href="/Admin/UserDelete/@x.Id">Delete</a></td>
+                <td> <a href="/Admin/UserUpdate/@x.Id">Update</a></td>
+            </tr>
+
+        }
+    </table>
+    <div id="checking">Checking...</div>
+       <div class="form-group " style="padding-left:125px">
+
+
+                        <label for="Search" style="font-size:xx-large">Search </label>
+                        <input  name="Search" id="Search" value="" type="Search" style="color:black">
+                        <br />
+                        
+                        <br/>
+                        <input value="Search" id="Searchbtn" name="Searchbtn" class="btn btn-default " type="button">
+                    </div>
+</div>
+
+
+  <br />
+        <div id="result1"></div>
+        <br />
